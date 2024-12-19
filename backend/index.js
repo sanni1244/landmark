@@ -18,6 +18,9 @@ app.use(cors({
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));
+app.get('/', (req, res) => {
+  res.send('Backend is running!');
+});
 
 
 app.use(express.json());
