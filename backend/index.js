@@ -13,21 +13,26 @@ connectDB();
 
 const app = express();
 
+// CORS configuration
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:3000', // fallback to localhost in development
+  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));
+
 app.get('/', (req, res) => {
   res.send('Backend is running!');
 });
 
-
 app.use(express.json());
+
+// API routes
 app.use("/api/auth", authRoutes);
 app.use("/api/questions", qRoutes);
-app.use("/api/games", [gRoutes, dRoutes]);
+app.use("/api/games", [gRoutes, dRoutes]); 
 app.use("/api/profile", pRoutes);
+
+// Static file serving for uploads
 app.use('/uploads', express.static('uploads'));
 
 module.exports = app;
