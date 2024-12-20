@@ -10,7 +10,7 @@ const pRoutes = require("./routes/profileRoutes");
 
 dotenv.config();
 connectDB();
-
+ 
 const app = express();
  
 // CORS configuration
