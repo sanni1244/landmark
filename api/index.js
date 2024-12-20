@@ -25,6 +25,7 @@ app.use(cors(corsOptions));
 // app.get('/', (req, res) => {
 //   res.send('Backend is running!');
 // }); 
+  
 
 app.use(express.json());
 
