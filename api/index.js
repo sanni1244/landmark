@@ -15,22 +15,23 @@ const app = express();
 
 // CORS configuration
 const corsOptions = {
-  origin: 'http://localhost:3000',  // Allow requests from the frontend (local URL)
+  origin: 'http://localhost:3000',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,  // Allow cookies or authorization headers if needed
 };
 app.use(cors(corsOptions));
-app.get('/', (req, res) => {
-  res.send('Backend is running!');
-});
+
+// app.get('/', (req, res) => {
+//   res.send('Backend is running!');
+// }); 
 
 app.use(express.json());
 
 // API routes
 app.use("/api/auth", authRoutes);
 app.use("/api/questions", qRoutes);
-app.use("/api/games", [gRoutes, dRoutes]); 
+app.use("/api/games", [gRoutes, dRoutes]);
 app.use("/api/profile", pRoutes);
 
 // Static file serving for uploads
